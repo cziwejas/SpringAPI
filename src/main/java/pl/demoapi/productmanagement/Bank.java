@@ -7,11 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Product {
+public class Bank {
 
     private int id;
-    private String name;
-    private int prize;
-    private String description;
+    private String capacity;
+    private String blood_type;
+    private String start_date;
+    private String end_date;
 
 }
