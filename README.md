@@ -11,6 +11,8 @@ application.properies:
 datasource values
 
 Spring boot application
-Database manipulation postman
+Database manipulation (postman)
+
+BazaDanych.sql - file with database
 
 !!! In progress !!!
