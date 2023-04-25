@@ -1,10 +1,11 @@
-# productmanagement
+# Spring API
 
 @GetMapping
 @PostMapping
 @DeleteMapping
 
-Running on localhost:8080\n
-Database mySQL localhost:3306
+Running on localhost:8080
+Database mySQL XAMPP localhost:3306
 
-Spring boot application 
+Spring boot application
+Database manipulation postman
