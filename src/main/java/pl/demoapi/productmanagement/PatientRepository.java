@@ -17,28 +17,25 @@ public class PatientRepository {
         return jdbcTemplate.query("SELECT * FROM Patient", BeanPropertyRowMapper.newInstance(Patient.class));
     }
 
-    public List<Bank> getAllBlood() {
-        return jdbcTemplate.query("SELECT * FROM Bank", BeanPropertyRowMapper.newInstance(Bank.class));
-    }
-
-    public List<Patient> getByBrand(String brand) {
-        return jdbcTemplate.query("SELECT * FROM Patient WHERE description = ?",
-                BeanPropertyRowMapper.newInstance(Patient.class), brand);
-    }
-
     public Patient getById(int id) {
         return jdbcTemplate.queryForObject("SELECT * FROM Patient WHERE id = ?",
                 BeanPropertyRowMapper.newInstance(Patient.class), id);
     }
 
     public int save(List<Patient> Patients) {
-        Patients.forEach( Patient -> jdbcTemplate.update("INSERT INTO Patient VALUES(?, ?, ?, ?)",
-                Patient.getId(), Patient.getName(), Patient.getSurname(), Patient.getAge()));
+        Patients.forEach( Patient -> jdbcTemplate.update("INSERT INTO Patient VALUES(?, ?, ?, ?, ?, ?, ?)",
+                Patient.getId(), Patient.getName(), Patient.getSurname(), Patient.getAge(), Patient.getEmail(), Patient.getBlood_type(), Patient.getPassword()));
         return 1;
     }
 
     public int deleteById(int id) {
         jdbcTemplate.update("DELETE FROM Patient WHERE id = ?", id);
+        return 1;
+    }
+
+    public int updatePatient(int id, Patient patient) {
+        jdbcTemplate.update("UPDATE Patient SET name = ?, surname = ?, age = ?, email = ?, blood_type = ?, password = ? WHERE id = ?",
+                patient.getName(), patient.getSurname(), patient.getAge(), patient.getEmail(), patient.getBlood_type(), patient.getPassword(), id);
         return 1;
     }
 }

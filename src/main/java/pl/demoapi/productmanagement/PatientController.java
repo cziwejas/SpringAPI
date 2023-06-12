@@ -7,6 +7,7 @@ import pl.demoapi.productmanagement.PatientRepository;
 
 import java.util.List;
 
+@CrossOrigin
 @RestController
 public class PatientController {
 
@@ -18,29 +19,23 @@ public class PatientController {
         return PatientRepository.getAllPatients();
     }
 
-    @GetMapping("/Bank")
-    public List<Bank> getAllBlood() {
-        return PatientRepository.getAllBlood();
-    }
-
-
-    @GetMapping("/brand/{id}")
-    public List<Patient> getByBrand(@PathVariable("id") String id) {
-        return PatientRepository.getByBrand(id);
-    }
-
-    @GetMapping("/{id}")
+    @GetMapping("/Patients/{id}")
     public Patient getById(@PathVariable("id") int id) {
         return PatientRepository.getById(id);
     }
 
-    @PostMapping("/add")
+    @PostMapping("/Patients/add")
     public int add(@RequestBody List<Patient> Patients) {
         return PatientRepository.save(Patients);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/Patients/Delete/{id}")
     public int delete(@PathVariable("id") int id) {
         return PatientRepository.deleteById(id);
+    }
+
+    @PutMapping("/Patients/Update/{id}")
+    public int updatePatient(@PathVariable("id") int id, @RequestBody Patient patient) {
+        return PatientRepository.updatePatient(id, patient);
     }
 }
