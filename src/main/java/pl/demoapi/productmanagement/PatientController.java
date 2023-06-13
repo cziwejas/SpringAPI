@@ -25,8 +25,8 @@ public class PatientController {
     }
 
     @PostMapping("/Patients/add")
-    public int add(@RequestBody List<Patient> Patients) {
-        return PatientRepository.save(Patients);
+    public int add(@RequestBody Patient patient) {
+        return PatientRepository.save(patient);
     }
 
     @DeleteMapping("/Patients/Delete/{id}")

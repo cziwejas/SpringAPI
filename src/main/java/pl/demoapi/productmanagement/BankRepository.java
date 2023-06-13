@@ -22,9 +22,9 @@ public class BankRepository {
                 BeanPropertyRowMapper.newInstance(Bank.class), id);
     }
 
-    public int save(List<Bank> Banks) {
-        Banks.forEach( Bank -> jdbcTemplate.update("INSERT INTO Bank VALUES(?, ?, ?, ?, ?)",
-                Bank.getId(), Bank.getCapacity(), Bank.getBlood_type(), Bank.getStart_date(), Bank.getEnd_date()));
+    public int save(Bank bank) {
+        jdbcTemplate.update("INSERT INTO Bank VALUES(?, ?, ?, ?, ?)",
+                bank.getId(), bank.getCapacity(), bank.getBlood_type(), bank.getStart_date(), bank.getEnd_date());
         return 1;
     }
 

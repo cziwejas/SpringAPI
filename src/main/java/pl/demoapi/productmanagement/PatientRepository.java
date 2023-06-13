@@ -22,7 +22,13 @@ public class PatientRepository {
                 BeanPropertyRowMapper.newInstance(Patient.class), id);
     }
 
-    public int save(List<Patient> Patients) {
+    public int save(Patient patient) {
+        jdbcTemplate.update("INSERT INTO Patient VALUES(?, ?, ?, ?, ?, ?, ?)",
+                patient.getId(), patient.getName(), patient.getSurname(), patient.getAge(), patient.getEmail(), patient.getBlood_type(), patient.getPassword());
+        return 1;
+    }
+
+    public int saveList(List<Patient> Patients) {
         Patients.forEach( Patient -> jdbcTemplate.update("INSERT INTO Patient VALUES(?, ?, ?, ?, ?, ?, ?)",
                 Patient.getId(), Patient.getName(), Patient.getSurname(), Patient.getAge(), Patient.getEmail(), Patient.getBlood_type(), Patient.getPassword()));
         return 1;

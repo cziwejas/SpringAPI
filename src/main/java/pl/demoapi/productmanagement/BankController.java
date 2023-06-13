@@ -23,8 +23,8 @@ public class BankController {
     }
 
     @PostMapping("/Bank/add")
-    public int add(@RequestBody List<Bank> Banks) {
-        return bankRepository.save(Banks);
+    public int add(@RequestBody Bank bank) {
+        return bankRepository.save(bank);
     }
 
     @DeleteMapping("/Bank/Delete/{id}")
